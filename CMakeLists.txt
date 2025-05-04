@@ -4,15 +4,15 @@ project(os_lab1)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Добавление исходных файлов для компиляции
-add_executable(os_lab1
-        src/main.cpp
-        src/Creator.cpp
-        src/reporter.cpp
-)
+# Создаем отдельные исполнимые файлы для Main, Creator и Reporter
+add_executable(Main src/main.cpp)
+add_executable(Creator src/Creator.cpp)
+add_executable(Reporter src/reporter.cpp)
 
-# Включите подпроекты.
-add_subdirectory(src)
+# Указываем общие каталоги для заголовочных файлов
+target_include_directories(Main PRIVATE ${CMAKE_SOURCE_DIR}/include)
+target_include_directories(Creator PRIVATE ${CMAKE_SOURCE_DIR}/include)
+target_include_directories(Reporter PRIVATE ${CMAKE_SOURCE_DIR}/include)
 
 #enable_testing()
 
